@@ -3,10 +3,11 @@ import multiprocessing
 import os
 import pandas
 import requests
+import sys
 
+# Conants
 BASE_HTTP_URL = "http://www.bailii.org"
 CASE_OUTPUT_PATH = "data/cases/"
-
 REQUEST_HEADERS = {
     'User-Agent': 'https://github.com/mjbommar/uk-court-data',
 }
@@ -63,4 +64,4 @@ def download_all_cases(decision_file_path, output_path=None, skip_existing=True,
 
 
 if __name__ == "__main__":
-    download_all_cases("../data/decisions.csv.gz", workers=2)
+    download_all_cases("data/decisions.csv.gz", workers=int(sys.argv[1]))
