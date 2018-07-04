@@ -44,6 +44,8 @@ def extract_case_judgement_text(case_file_path, skip_existing=True):
             p0 = content.find("HTML VERSION OF JUDGMENT")
             if p0 == -1:
                 p0 = content.find("Crown Copyright")
+            if p0 == -1:
+                p0 = content.find("[Help]")
             p1 = content.find("BAILII:\nCopyright Policy")
             case_text = content[p0:p1].strip()
         else:
